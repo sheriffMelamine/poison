@@ -1,21 +1,21 @@
 {{ define "main" -}}
-<div class="posts">
-    {{ $frontPageTypes := default (slice "posts") .Site.Params.front_page_content }}
-    {{ range (.Paginate (where .Site.RegularPages "Type" "in" $frontPageTypes)).Pages }}
-    <article class="post">
-        {{ partial "post/info.html" . }}
-        {{ if or (.Site.Params.noSummary) (.Params.noSummary) }}
-        {{ .Content }}
+{{ if .Site.Params.light_dark }}
+    {{ partial "light_dark.html" . }}
+{{ end }}
+<div class="post">
+    {{ with .Site.GetPage "/about" }}
+        {{ if .Pages }}
+            {{ range .Pages }}
+                <h1 class="post-title">{{ .Title }}</h1>
+                {{ .Content }}
+            {{ end }}
         {{ else }}
-        {{ .Summary }}
-        {{ if .Truncated }}
-        <div class="read-more-link">
-            <a href="{{ .RelPermalink }}">Read More…</a>
-        </div>
+            <h1 class="post-title">{{ .Title }}</h1>
+            {{ .Content }}
         {{ end }}
-        {{ end }}
-    </article>
-    {{- end }}
+    {{ end }}
+    {{ if (.Site.Params.listmonk) }}
+        {{ partial "post/listmonk_email_newsletters.html" . }}
+    {{ end }}
 </div>
-{{ partial "pagination.html" . }}
-{{- end }}
+{{ end }}
