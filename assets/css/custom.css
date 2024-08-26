@@ -3,9 +3,17 @@
 img[src$='#center'] {
 	display: block;
 	margin: 0.7rem auto;
+	
+}
+img[src$='#gallery'] {
+	display: block;
+	margin: 2rem auto;
+	max-height:400px;
+	max-width: 400px;
+	
 }
 img[src$='#right'] {
 	float: right;
-	margin: 0.7rem;
+	margin: 1.5rem;
 }
 
