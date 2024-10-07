@@ -141,8 +141,8 @@ body > .wrapper {
     text-align: center;
     border: 2px solid var(--sidebar-img-border-color);
     border-radius: 50%;
-    height: 180px;
-    width: 180px;
+    height: 120px;
+    width: 120px;
 }
 .social {
     margin-right: 0.5em;
